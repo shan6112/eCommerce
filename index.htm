@@ -1,0 +1,97 @@
+<!doctype html>
+<html>  
+<head>
+        <title>computer mouse</title>
+        <style>
+            img{
+                length:150px;
+                width:150px;
+            }
+	
+	    #output{
+		text-align:left;	
+	   }
+
+        </style>
+        <script>
+        var retail_prices_1=15,wholesale_price1=13;
+        var retail_prices_2=13,wholesale_price2=10;
+        var retail_prices_3=12,wholesale_price3=8;
+        var tax=0.0875
+        function initprice(){
+		var retail_item_subtotal_1 = parseInt(document.getElementById("qt1").value) * retail_prices_1;
+		var retail_item_subtotal_2 = parseInt(document.getElementById("qt2").value) * retail_prices_2;
+		var retail_item_subtotal_3 = parseInt(document.getElementById("qt3").value) * retail_prices_3;
+		var customer_subtotal = retail_item_subtotal_1 + retail_item_subtotal_2 + retail_item_subtotal_3; 
+		var tax = customer_subtotal *0.0875;
+		var number_of_items_sold = parseInt(document.getElementById("qt1").value)+parseInt(document.getElementById("qt2").value)+parseInt(document.getElementById("qt3").value)
+	
+	var shipping_cost=0;
+	if(customer_subtotal <100){
+		shipping_cost=25;
+	}else if(customer_subtotal >=100 && customer_subtotal<200){
+		shipping_cost=10;
+	}else{
+		shipping_cost=0;
+	}
+   	var customer_total = customer_subtotal+shipping_cost;
+		var wholesale_item_subtotal_1 = parseInt(document.getElementById("qt1").value)* wholesale_price1;
+		var wholesale_item_subtotal_2 = parseInt(document.getElementById("qt2").value)* wholesale_price2;
+		var wholesale_item_subtotal_3 = parseInt(document.getElementById("qt3").value)* wholesale_price3;
+		var company_total = wholesale_item_subtotal_1 +wholesale_item_subtotal_2 +wholesale_item_subtotal_3;
+		var profit= customer_total-company_total; 
+		
+		document.getElementById("customer_subtotal").innerHTML ="$"+customer_subtotal;
+document.getElementById("tax").innerHTML ="$"+tax;
+document.getElementById("shipping_cost").innerHTML ="$"+shipping_cost;
+document.getElementById("customer_total").innerHTML ="$"+customer_total;
+document.getElementById("number_of_items_sold").innerHTML = number_of_items_sold;
+document.getElementById("customer_subtotal2").innerHTML ="$"+customer_subtotal;
+document.getElementById("company_total").innerHTML ="$"+company_total;
+document.getElementById("profit").innerHTML ="$"+profit;
+        }
+            
+        
+        
+         </script>
+
+    </head>
+    <body>
+        <h1>computer mouse store</h1>
+        <div>
+            <img src="mouse1.jpg"><br>
+            <p> computer mouse1</p><br>
+            <span>the price is $15.00</span>
+            <input type="text"id="qt1"placeholder="Enter#">
+        </div>
+        <h2>
+        <div>
+            <img src="mouse2.jpg"><br>
+            <p> computer mouse2</p><br>
+            <span>the price is $13.00</span>
+            <input type="text"id="qt2"placeholder="Enter#">
+        </div>
+         <h3>
+        <div>
+            <img src="mouse3.jpg"><br>
+            <p> computer mouse3</p><br>
+            <span>the price is $12.00</span>
+            <input type="text"id="qt3"placeholder="Enter#">
+        </div>
+        <button onclick="initprice()">price</button>
+        <div id="output">
+        CUSTOMER ORDER DETAILS:<br>
+         Subtotal:<p id="customer_subtotal"></p>
+	 Tax:<p id="tax"></p>
+	 Shipping & Handling:<p id="shipping_cost"></p> 
+	 Customer Total:<p id="customer_total"></p> 
+
+
+	ORDER DETAILS FOR COMPANY:<br>
+	Total Items sold: <p id="number_of_items_sold"></p>
+	Customer Subtotal:<p id="customer_subtotal2"></p>
+	Company Subtotal:<p id="company_total"></p> 
+	Profit/Loss:<p id="profit"></p> 
+	</div>                         
+</body>
+</html>
